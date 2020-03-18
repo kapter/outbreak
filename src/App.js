@@ -31,16 +31,16 @@ class App extends Component<Props, State> {
       spoilerOrNot = "spoiler-revealed";
       // showSpoilerButton = <WidgetButton highlighted={false} onClick={() => { this.setState({criticalThresholdVisible: false}); } } >Hide spoilers</WidgetButton>
     }
-    showSpoilerButton = <label><span style={{cursor: "pointer"}}><input type="checkbox" value={this.state.spoilersVisible} onChange={(e) => { this.setState({spoilersVisible: e.target.checked}); }}/> Show spoilers</span></label>;
+    showSpoilerButton = <label><span style={{cursor: "pointer"}}><input type="checkbox" value={this.state.spoilersVisible} onChange={(e) => { this.setState({spoilersVisible: e.target.checked}); }}/> Спойлер</span></label>;
 
 
-    let exposed_you = <code className="code-exposed">you</code>;
+    let exposed_you = <code className="code-exposed">вы</code>;
 
-    let susceptible = <code className="code-susceptible">Susceptible</code>;
-    let infected = <code className="code-infectious">Infected</code>;
-    let recovered = <code className="code-removed">Recovered</code>;
-    let dead = <code className="code-dead">Dead</code>;
-    let selfQuarantined = <code className="code-quarantined">Self-quarantined</code>;
+    let susceptible = <code className="code-susceptible">Восприимчив</code>;
+    let infected = <code className="code-infectious">Инфецирован</code>;
+    let recovered = <code className="code-removed">Выздоровел</code>;
+    let dead = <code className="code-dead">Умер</code>;
+    let selfQuarantined = <code className="code-quarantined">Самоизолирован</code>;
 
     // noinspection HtmlRequiredAltAttribute
     return (
@@ -59,10 +59,10 @@ spread exponentially, and
 how to “flatten the curve”</a>.
         </div>
         <div>
-          Today I want to follow up with something I've been working on: <strong>playable simulations</strong> of a disease outbreak. "Playable" means you'll get to tweak parameters (like transmission and mortality rates) and watch how the epidemic unfolds.
+          Kevin Simler разработал <strong>игровой симулятор</strong> вспышки инфекции. "Игровой" означает, что вы можете менять параметры распространения (такие как перемещение или уровень смертности) и наблюдать как проходит эпидемия.
         </div>
         <div>
-          By the end of this article, I hope you'll have a better understanding — perhaps better <em>intuition</em> — for what it takes to contain this thing. But first!...
+          В конце этой статьи, Кевин надеется, вы лучше поймете, возможно лучше, чем  <em>интуитивно</em>, зачем нужно иметь это ввиду. Но сначала... 
         </div>
         {/*<div>*/}
         {/*  Last year, I wrote a <a href="https://meltingasphalt.com/interactive/going-critical/">viral article about viral growth</a>.*/}
@@ -74,31 +74,31 @@ how to “flatten the curve”</a>.
         {/*  Today, in light of our current crisis, I wanted a chance to revisit these simulations. And you can play with them in just a moment. But first...*/}
         {/*</div>*/}
         <div>
-          <span style={{backgroundColor: '#FFC'}}><strong>AN IMPORTANT WARNING</strong></span>:
+          <span style={{backgroundColor: '#FFC'}}><strong>ВАЖНОЕ ПРЕДУПРЕЖДЕНИЕ</strong></span>:
         </div>
         <div>
-          <strong>This is <em>not</em> an attempt to model COVID-19.</strong>
+          <strong>Это  <em>не</em> попытка смоделировать распространение COVID-19.</strong>
         </div>
         <div>
-          What follows is a <em>simplified</em> model of a disease process. The goal is to learn how epidemics unfold <em>in general</em>.
+          Это <em>упрощенная</em> модель процесса инфецирования. Цель - понять как проходят инфекции <em>в общем случае</em>.
         </div>
         <div>
-          <span>WARNING #2</span>: I'm not an epidemiologist! I defer to infectious disease experts (and so should you). I have almost certainly made mistakes in this article, but I'll correct them as quickly as I can. If you see any problems, please <a href="https://meltingasphalt.com/contact/">get in touch</a>.
+          <span>ПРЕДУПРЕЖДЕНИЕ №2</span>: Кевин не эпидемиолог! Я полагаюсь на специалистов по инфекционным заболеваниям (может быть это вы). Здесь могут быть ошибки, но они будут исправлены ASAP. Если вы их обнаружите, то <a href="https://meltingasphalt.com/contact/">пишите письма</a>.
         </div>
         <div>
-          Alright?
+          Всё понятно?
         </div>
         <div>
-          Let's do this.
+          Погнали.
         </div>
         <div>
-          <h3>A grid of people</h3>
+          <h3>Сетка людей</h3>
         </div>
         <div>
-          We're going to build our model up slowly, one piece at a time.
+          Мы будем строить нашу модель медленно, по частям.
         </div>
         <div>
-          The first thing a disease needs is a <strong>population</strong>, i.e., the set of people who can potentially catch the disease. Ours will live in neat rows and columns, like the 9x9 grid you see here:
+          Инфекция не может существовать без <strong>популяции</strong>, то есть группы людей, которые потенциально могут заболеть. Наши будут размещены в колонках и строках, как зздесь в поле 9x9:
         </div>
         <Figure>
           <Grid daysIncubating={0}
@@ -116,16 +116,16 @@ how to “flatten the curve”</a>.
           />
         </Figure>
         <div>
-          Each square represents a single person. The poor soul at the center, as you may have guessed, is {infected}. Meanwhile, everyone else is {susceptible}.
+          Каждый квадрат - это человек. Бедняга в середине, как вы можете заметить, {infected}. Предположим, все остальные {susceptible}.
         </div>
         <div>
-          <h3>Time</h3>
+          <h3>Время</h3>
         </div>
         <div>
-          Now let's incorporate time into our model.
+          Давай те добавим ВРЕМЯ в нашу модель.
         </div>
         <div>
-          The "Step" button (below) moves the simulation forward 1 day per click. Or you can press the ▷ button to watch things happen on their own:
+          Кнопка "Step" (ниже) запускает симуляцию на 1 день. Вы можете нажать кнопку ▷, чтобы посмотреть, что случится в итоге:
         </div>
         <Figure>
           <Grid daysIncubating={0}
@@ -143,13 +143,13 @@ how to “flatten the curve”</a>.
           />
         </Figure>
         <div>
-          Oh no. It looks like everyone sneezed on their immediate neighbors — north, east, south, west — and the whole world got sick.
+          О, нет. Выглядит так, как будто каждый заражает своего соседа — сверху, снизу, справа и слева. Весь мир заболеет.
         </div>
         <div>
-          <h3>Recovery</h3>
+          <h3>Выздоровление</h3>
         </div>
         <div>
-          But people don't stay sick forever. Let's see what happens when they get better after 2 steps (i.e., 2 days):
+          Люди не могут болеть бесконечно. Давайте посмотрим, что произойдет через два шага ( 2 дня):
         </div>
         <Figure>
           <Grid daysIncubating={0}
@@ -167,35 +167,35 @@ how to “flatten the curve”</a>.
           />
         </Figure>
         <div>
-          Great, now people can transition from {infected} to {recovered}.
+          Отлично, теперь люди могут переходить из состояния {infected} в {recovered}.
         </div>
         <div>
-          Here's a handy legend:
+          Это описание состояний:
         </div>
         <div>
           <ul>
-            <li><NodeLegend type="susceptible"/> &nbsp;<b>Susceptible</b></li>
-            <li><NodeLegend type="infected"/> &nbsp;<b>Infected</b></li>
-            <li><NodeLegend type="removed"/> &nbsp;<b>Recovered</b></li>
+            <li><NodeLegend type="susceptible"/> &nbsp;<b>Восприимчив</b></li>
+            <li><NodeLegend type="infected"/> &nbsp;<b>Инфецирован</b></li>
+            <li><NodeLegend type="removed"/> &nbsp;<b>Выздоровел</b></li>
           </ul>
         </div>
         <div>
-          For purposes of our simulation, once someone is {recovered}, they can't get reinfected. This is hopefully (and probably) true for COVID-19, but not certain.
+          В целях симуляции, если кто-то {recovered}, он не может заразится снова. Есть надежда и, наверное, это верно для COVID-19, #ноэтонеточно.
         </div>
         <div>
-          <h3>Incubation period</h3>
+          <h3>Инкубационный период</h3>
         </div>
         <div>
-          In discussions of COVID-19, you may have heard that the disease has a long <strong>incubation period</strong>. This is the time between when a person initially contracts the disease and the onset of first symptoms.
+          В обсуждениях COVID-19вы, вероятно, слышали, что у болезни длительный <strong>инкубационный период</strong>. Это время между инфецированием и появлением первых симптомов.
         </div>
         <div>
-          With COVID-19, it seems that patients are contagious during the incubation period. They may not even realize they're sick, but they're still able to infect others.
+          В случае с COVID-19 предполагается, что пациенты заразны в это время. Они не могут оценить себя, как больных, но могут заражать окружающих.
         </div>
         <div>
-          We will replicate this feature in our disease model. (But remember, we're not trying to model COVID-19 precisely!)
+          Добавим это в нашу модель инфекции. (Но помним, что мы не пытаемся смоделировать COVID-19 точно!)
         </div>
         <div>
-          Here's what an incubation period looks like:
+          Так выглядит инкубационный период:
         </div>
         <Figure>
           <Grid gridRows={25}
@@ -212,39 +212,37 @@ how to “flatten the curve”</a>.
           />
         </Figure>
         <div>
-          The way I've chosen to model this disease, there's no important distinction between the pink and red states. As far as the virus is concerned, both states behave the same.
+          В этой модели инфекции нет особой разницы между розовым и красным состоянием. Как только инфекция появилась, оба состояния одинаковы.
         </div>
         <div>
-          Nevertheless, I wanted to include the incubation period as a (visual) reminder that carriers of COVID-19 are lurking among us, hidden from the official statistics, totally unaware that they're infected.
+          Тем не менее, обратите внимание, что люди в инкубационном периоде являются переносчиками COVID-19. Они не знают, что болеют, не включены в официальную статистику, вообще не переживают, что инфецированны.
         </div>
         <div>
-          ... unaware that they're spreading the disease to others.
+          ... не обеспокоены, что могут заразить других.
         </div>
         <div>
-          Even as you read this, {exposed_you} may be such a person.
+          Когда вы читаете это, {exposed_you} можете быть таким.
         </div>
         <div>
           <ul>
-            <li><NodeLegend type="susceptible"/> &nbsp;<b>Susceptible</b></li>
-            <li><NodeLegend type="exposed"/> &nbsp;<b>Infected (incubation period, no symptoms)</b></li>
-            <li><NodeLegend type="infected"/> &nbsp;<b>Infected (with symptoms)</b></li>
-            <li><NodeLegend type="removed"/> &nbsp;<b>Recovered</b></li>
+            <li><NodeLegend type="susceptible"/> &nbsp;<b>Восприимчив</b></li>
+            <li><NodeLegend type="exposed"/> &nbsp;<b>Инфециорован (Инкубационный период, без симптомов)</b></li>
+            <li><NodeLegend type="infected"/> &nbsp;<b>Инфециорван (С симптомами)</b></li>
+            <li><NodeLegend type="removed"/> &nbsp;<b>Выздоровел</b></li>
           </ul>
         </div>
         <div>
-          <h3>Probabilistic infection</h3>
-        </div>
-        <div>
-          OK, enough.
+          <h3>Вероятность заражения</h3>
         </div>
         <div>
           Real diseases don't spread outward with 100 percent certainty. They spread probabilistically.
+          Реальная инфекция не передается 100% восприимчивых. Она распространяется с некоторой вероятностью.
         </div>
         <div>
-          So let's introduce a new parameter: the <strong>transmission rate</strong>. This controls the chance that an infection gets passed from person to person.
+          Введем новый параметр: <strong>вероятность заражения</strong>. Он отвечает за шансы на заражение от человека к человеку.
         </div>
         <div>
-          Can you find a value for the transmission rate that keeps the disease from spreading to the entire population?
+          Сможете ли вы найти <strong>вероятность заражения</strong> при которой инфекция не распространится на всю популяцию?
         </div>
         <Figure>
           <Grid gridRows={51}
@@ -264,61 +262,62 @@ how to “flatten the curve”</a>.
           />
         </Figure>
         <div>
-          Q: What's the <em>largest</em> transmission rate where the disease doesn't seem capable of spreading forever (e.g., reaching all four edges of the grid)?
+          Q: Какая  <em>самая большая</em> вероятность заражения при которой инфекция не поразит всю популяцию (то есть не достигнет углов сетки)?
         </div>
         <div style={{marginLeft: '2em'}}>
           {showSpoilerButton}
         </div>
         <div>
-          In my experiments, it seems to be around <span className={spoilerOrNot}>0.35</span>, maybe <span className={spoilerOrNot}>0.34</span>. Below that, I've seen the infection fizzle out every time. Above, it generally infects most of the grid.
+          Проведя эксперименты, вы найдете <span className={spoilerOrNot}>0.35</span>, может <span className={spoilerOrNot}>0.34</span>. Тем не менее, инфекция всегда выдыхается. Всегда поражая почти всю сетку.
         </div>
         <div>
-          Here's how transmission works in our disease model.
+          Опишем, как работает передача вируса в нашей модели.
         </div>
         <div>
-          Every day, each person has a fixed number of <strong>encounters</strong> with the people nearby.
+          Каждый день, каждый человек контактирует с <strong>ограниченным числом</strong> людей рядом.
         </div>
         <div>
-          Thus far, we've allowed people to interact only with their immediate neighbors, for a total of 4 encounters per day. We'll vary these assumptions below.
+          В текущей модели это четыре человека рядом с ним. Изменим это ниже.
         </div>
         <div>
-          During each encounter, the transmission rate determines the probability that an {infected} person will give the disease to a {susceptible} person. The higher the transmission rate, the more likely the disease gets passed along.
+         С каждым контактом, вероятность заражения показывает возможность заражения {susceptible} людей {infected} человеком. Высокая вероятность заражения приводит к долгому существованию инфекции.
         </div>
         <div>
-          In reality, there are many different types of encounters. You might brush past someone on the sidewalk. Or sit next to them on a bus. Perhaps you'll share an ice cream cone. Each of these encounters would result in a different probability of transmitting the infection. But in our model, for simplicity, all encounters share the same transmission rate.
+          В реальности, возможно различное число контактов. Вы можете встретить кого-то на улице. Или быть в автобусе с кем-то. Может быть вы угостите кого-то мороженым. В результате каждый из контактов будет заражен с некторой вероятностью. Но в нашей модели, для упрощения, вероятность одна.
         </div>
         <div>
           ——
         </div>
         <div>
-          As you continue playing with these simulations (above and below) and thinking about their relevance to coronavirus/COVID-19, here's something to keep in mind:
+          Прежде чем мы продолжим играть и думать о преминимости к COVID-19, держите в голове несколько соображений:
         </div>
         <div>
-          Transmission rate is partly a function of the <em>disease itself</em> (how naturally infectious it is), but also a function of the <em>environment</em> that the disease lives in. This includes both the physical environment (e.g., air temperature and humidity) as well as the social environment (e.g., people's behaviors).
+          Вероятность заражения - это свойство <em>инфекции</em> (зависит от самой инфекции), но существуют свойства <em>окружения</em> в которых инфекция существует. Они включают в себя как свойства среды (например, температура, скорость ветра), так и социальные свойства (например, поведение людей).
         </div>
         <div>
-          For example, when people wash their hands and wear masks to contain coughs, the transmission rate per encounter goes down — even if the virus itself doesn't change.
+          Например, когда люди моют руки и носят маски, вероятность заражения снижается, но инфекция не изменяется.
         </div>
         <div>
-          Now, for any viral-growth process, it's possible to find a transmission rate low enough to completely stop the spread. This is called the "critical threshold," and you can learn more about it <a href="https://meltingasphalt.com/interactive/going-critical">here</a>.
+          Теперь для понимания, попробуем найти вероятность заражения при которой инфекция останавливается. Это "critical threshold," вы можете почитать об этом подробнее  <a href="https://meltingasphalt.com/interactive/going-critical">здесь</a>.
+      
         </div>
         <div>
-          But COVID-19 is so infectious, it's hard to get below the critical transmission rate. We can only wash our hands so many times a day. Even wearing masks out in public won't be enough enough to bring transmission down far enough (though every inch is helpful).
+          Но COVID-19 - инфекция, для которой сложно достичь "critical transmission rate". Мы можем мыть руки много раз в день. Даже носить маски в местах сколения людей (всё это идет на пользу).
         </div>
         <div>
-          We <em>could</em> all wear hazmat suits every time we leave the house; technically that would solve the transmission problem (without changing our patterns of social interaction). But since that's, uh, impractical, let's consider other ways to keep this disease from consuming us.
+          Мы <em>можем</em> надевать ОЗК при выходе из дома; технически мы решим проблему заражения (без изменения наших привычек в общении). Но это не очень практично, давайте найдем другой путь, чтобы эпидемия нас не съела.
         </div>
         <div>
-          <h3>Travel</h3>
+          <h3>Поездки</h3>
         </div>
         <div>
-          Here's another unrealistic assumption we've been making: we've been allowing people to interact only with their immediate neighbors.
+          Есть нереалестичное допущение: мы предположили, что люди контактируют только с ближайшими соседями.
         </div>
         <div>
-          What happens when we let people travel farther afield? (We're still assuming 4 encounters per day, a parameter we'll expose in the next section.)
+          Что будет, если люди будут перемещаться дальше? (Мы все ещё предполагаем, что у нас 4 контакта в день. Изменим это позже.)
         </div>
         <div>
-          As you pull the <strong>travel radius</strong> slider below, you'll see a sample of the encounters that the center person will have on any given day. (We can't draw <em>everyone's</em> encounters because it would get too crowded. You'll just have to use your imagination.) Note that in our model, unlike in real life, each day brings a new (random) set of encounters.
+          Мы добавим слайдер <strong>дальность поездок</strong> и увидим часть контактов центральной клетки, которые происходят каждый день. (Мы не можем отобразить все, положитесь на ваше воображение). В нашей модели в отличии от реальной жизни, контакты каждый день случайные.
         </div>
         <Figure>
           <Grid degree={24}
@@ -338,27 +337,27 @@ how to “flatten the curve”</a>.
           />
         </Figure>
         <div>
-          Note that if you restrict travel from the beginning (e.g., to a radius of 2 units), you can slow the infection down a great deal.
+          Заметьте, что если запретить поездки сразу (например дальность поездок=2), вы замедлите распространение, и это отличная новость.
         </div>
         <div>
-          But what happens when you start with unrestricted travel, let the infection spread pretty much everywhere, and only restrict travel <em>later</em>?
+          Но, что будет, если вы не ограничите поездки. Инфекция начнет распространяться везде. 
         </div>
         <div>
-          In other words, how early in the infection curve do you have to curtail travel in order for it to meaningful slow the outbreak?
+          Другими словами, чем раньше в кривой заражения вы ограничите поездки, тем успешней вам удасться погасить вспышкую.
         </div>
         <div>
-          Go ahead, try it. Start with a travel radius of 25. Then play the simulation, pausing when you get to about 10 percent infected. Then reduce the travel radius to 2 and play it out. What happens?
+          Давайте попробуем. Начнем с дао=льнось поездок = 25. Запустите симуляцию, поставьте на паузу, когда заразятся примерно 10%. Уменьшите дальность поездок до 2 и запустите. Что случилось?
         </div>
         <div>
-          Takeaway: travel restrictions are most useful when they're applied early, at least for the purpose of flattening the curve. (So let's get them in place!)
+          Итого: ограничение перемещений полезно использовать, как можно раньше, для сглаживания кривой.
         </div>
         <div>
-          But travel restrictions can help even in the later stages of an outbreak, for at least two reasons:
+          Но ограничение перемещений может помочь даже на последних стадиях по крайней мере по двум причинам:
         </div>
         <div>
           <ol>
-            <li>Buses, trains, and airports are places where people gather together in cramped quarters. When people stop using these modes of transport, they reduce the number of encounters they have with potentially infected people. (We'll explore this more below.)</li>
-            <li>Reducing travel is critical <em>in concert with regional containment measures</em>. If one region gets the outbreak under control, but neighboring regions are still on fire, you have to protect the controlled region. (We're not going to explore containment measures in this article, but they may be important soon, and if you're interested, you might start <a href="https://necsi.edu/beyond-contact-tracing">here</a>.)</li>
+            <li>Автобусы, поезда и аэропорты - это места, где люди собираются в ограниченном пространстве. Когда их перестают использовать, снижается число контактов с потенциальными переносчиками инфекции. (Попробуем это позже.)</li>
+            <li>Сокращение перемещений весьма эффективно <em>в сочетании с региональными мерами сдерживания</em>.  (Мы не будем их исследовать в этой статье, но если вам интересно, то почитайте <a href="https://necsi.edu/beyond-contact-tracing">здесь</a>.)</li>
           </ol>
         </div>
         <div>
