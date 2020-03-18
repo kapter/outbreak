@@ -37,7 +37,7 @@ class App extends Component<Props, State> {
     let exposed_you = <code className="code-exposed">вы</code>;
 
     let susceptible = <code className="code-susceptible">Восприимчив</code>;
-    let infected = <code className="code-infectious">Инфецирован</code>;
+    let infected = <code className="code-infectious">Инфицирован</code>;
     let recovered = <code className="code-removed">Выздоровел</code>;
     let dead = <code className="code-dead">Умер</code>;
     let selfQuarantined = <code className="code-quarantined">Самоизолирован</code>;
@@ -80,7 +80,7 @@ how to “flatten the curve”</a>.
           <strong>Это  <em>не</em> попытка смоделировать распространение COVID-19.</strong>
         </div>
         <div>
-          Это <em>упрощенная</em> модель процесса инфецирования. Цель - понять как проходят инфекции <em>в общем случае</em>.
+          Это <em>упрощенная</em> модель процесса заражения. Цель - понять как проходят инфекции <em>в общем случае</em>.
         </div>
         <div>
           <span>ПРЕДУПРЕЖДЕНИЕ №2</span>: Кевин не эпидемиолог! Надежда на специалистов по инфекционным заболеваниям (может быть это вы). Здесь могут быть ошибки, но они будут исправлены ASAP. Если вы их обнаружите, то <a href="https://meltingasphalt.com/contact/">пишите письма</a>.
@@ -186,7 +186,7 @@ how to “flatten the curve”</a>.
           <h3>Инкубационный период</h3>
         </div>
         <div>
-          В обсуждениях COVID-19 вы, вероятно, слышали, что у болезни длительный <strong>инкубационный период</strong>. Это время между инфецированием и появлением первых симптомов.
+          В обсуждениях COVID-19 вы, вероятно, слышали, что у болезни длительный <strong>инкубационный период</strong>. Это время между заражением и появлением первых симптомов.
         </div>
         <div>
           В случае с COVID-19 предполагается, что пациенты заразны в это время. Они не могут оценить себя, как больных, но могут заражать окружающих.
