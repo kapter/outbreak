@@ -361,16 +361,16 @@ how to “flatten the curve”</a>.
           </ol>
         </div>
         <div>
-          <h3>Number of encounters</h3>
+          <h3>Количество контактов</h3>
         </div>
         <div>
-          Alright, let's really open this thing up.
+          Давайте займемся этим.
         </div>
         <div>
-          In the simulation below, you can vary the <strong>encounters per day</strong>.
+          В симуляции, вы можете изменять <strong>Количество контактов в день</strong>.
         </div>
         <div>
-          Let's start at 20. What's the minimum value we need to keep the outbreak contained?
+          Начнем с 20. Какое минимально число нужно, чтобы инфекция распространялась?
         </div>
         <Figure>
           <Grid degree={24}
@@ -394,37 +394,34 @@ how to “flatten the curve”</a>.
         {/*  Here's another question you might try to answer: <em>For a fixed number of encounters (e.g., 5 per day), how much do you need to reduce the travel radius to keep the disease in check?</em>*/}
         {/*</div>*/}
         <div>
-          As you can see, reducing encounters per day has a <em>dramatic effect</em> on the outbreak. It easily flattens the curve, and even has the potential (when taken very seriously) to completely quench an outbreak.
+          Как вы видите, снижение числа контактов производит <em>невероятный эффект</em> на заражение. Это позволяет сильно сгладить кривую и даже остановить распространение.
         </div>
         <div>
-          This is the effect we're hoping for when we call for "social distance." This is why so many people are pleading with their officials to stop the parades and close the schools, and why all of us should stay away from bars and coffee shops and restaurants, and work from home as much as possible.
+          Этого эффекта мы хотим достичь, держа "социальную дистанцию". Поэтому многие требуют от официальных властей ограничений массовых мероприятий и закрытия учебных заведений, и, поэтому, мы должны держаться подальше от кафе, баров и ресторанов, работать из дома, если это возможно.
         </div>
         <div>
-          The NBA did their fans a tremendous service by canceling the rest of the season. Now we need to follow suit and <em>cancel everything</em>.
+          NBA закрыло сезон, оказав неоценимую услугу своим фанатам. Теперб нужно закрыть всё.
         </div>
         <div>
-          In my understanding (again, not an expert), this is the single most important lever we have for fighting this thing.
+          Это самая важная вещь в борьбе с инфекцией (это не экспертное мнение).
         </div>
         <div>
-          <h3>Death</h3>
+          <h3>Смерть</h3>
         </div>
         <div>
-          Not every patient recovers from a disease. Many end up {dead}.
+          Не все пациенты выздоравливают. Многие умирают {dead}.
         </div>
         <div>
-          Enter the <strong>fatality rate</strong>.
+          Добавим <strong>уровень смерности</strong>.
         </div>
         <div>
-          In our simulation, fatality rate is the probability that a patient who gets infected will ultimately die of the infection, assuming they get normal/adequate medical care.
+          В нашей модели, уровень смерности - это вероятность, что пациент умрет от ифекции, учитывая, что он получит нормальное/адекватное медицинское обслуживание.
         </div>
         <div>
-          <span className="deemphasized">(Update: an earlier version of this article made a distinction between case fatality rate and mortality rate, but failed to define the terms correctly. Collapsing this distinction and using the term "fatality rate" instead.)</span>
+          Уровень смерности COVID-19 определен между 1% and <a href="https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30195-X/fulltext">6%</a>. Он может быть ниже 1%, если сущетвует большое количество необнаруженных зараженных. Он увеличивается, если система здравохранения перегружена.
         </div>
         <div>
-          The fatality rate for COVID-19 has been estimated between 1 percent and <a href="https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30195-X/fulltext">6 percent</a>. It might turn out to be lower than 1 percent, if there are a lot of undiagnosed cases. It's definitely higher when the medical system is overburdened (more on that in a minute).
-        </div>
-        <div>
-          We'll start at a 3 percent fatality rate for our disease model, but you can vary the parameter below:
+          Мы начнем с 3%, но вы можете изменить этот параметр:
         </div>
         <Figure>
           <Grid gridRows={101}
@@ -443,37 +440,39 @@ how to “flatten the curve”</a>.
           />
         </Figure>
         <div>
-          Those scattered black dots may not look like much. But remember, each is a human life lost to the disease.
+          Черных точек не так много. Но помните, что это человеческая жизнь, которую унесла инфекция.
         </div>
         <div>
-          <h3>Hospital capacity</h3>
+          <h3>Вместимость больниц</h3>
         </div>
         <div>
-          Below you'll find one last new slider. It controls <strong>hospital capacity</strong>.
+          Ниже мы добавим еще один слайдер. Он отвечает за <strong>вместимость больниц</strong>.
         </div>
         <div>
-          This is the number of patients (expressed as a percentage of the population) that can be treated by our medical system at any one time.
+          Это процент населения, который больницы могут принять одномоментно.
         </div>
         <div>
-          Why does hospital capacity matter?
+          Почему это важно?
         </div>
         <div>
-          When there are more patients than the system can handle, they can’t get the treatment they need. And as a result, they have significantly worse outcomes. As we've seen in Italy, some may be left to die in the hallways.
+          Когда пациентов много, система здравоохранения не справляется, Они не могут осущетвлять лечение в нужном объеме. Как результат, большое количество жертв.
         </div>
         <div>
           I've heard people speak of hospital capacity as the “number of beds,” or “number of ICU beds.” My take is that mere "beds" can be set up in a gymnasium on very short notice. I think the real bottleneck is medical equipment — specifically ventilators. But I'm not sure. Maybe it’s medical personnel.
+          Люди говорят о вместимости больниц, как о "количестве кроватеи" иликак о "количестве кроватей с ИВЛ". Есть мысль, что "кровати" можно расставить гед угодно в сжатые сроки. Может быть, реальное узкое место - это ИВЛ. #ноэтонеточно. Может быть, медицинский персоал.
         </div>
         <div>
+          В жизни, важно <em>всё это</em>. Мы должны находить узкие места и направлять все усилия на решение проблемы. В симуляции мы не можем указать точно. Ограничимся числом <strong>вместимость больниц</strong>.
           In reality, this matters <em>a lot</em>. We need to identify what the bottleneck is, and do our best to alleviate pressure there. But for a simulation, we can just wave our hands and assume there's limited capacity somewhere in the system. Remember, we're not trying to model reality too carefully.
         </div>
         <div>
-          In our disease model, here's how the medical system breaks:
+          В модели увидим, как работает перегрузка системы здравоохранения:
         </div>
         <div>
-          <strong>When there are more infections than hospital capacity, the fatality rate <em>doubles</em>.</strong>
+          <strong>Когда количество заразившихся превосходит вместимость, смертность растет <em>вдвое</em>.</strong>
         </div>
         <div>
-          Give it a try. Pay special attention to the <em>input fatality rate</em> (the value on the slider), which defines how often people die even in the best circumstances, vs. the <em>actual death rate</em> (highlighted below the chart), which tells us how the system behaves under strain.
+          Попробуем. Обратите особое внимание на <em>уровень смерности</em> , он показывает как изменяется уровень смертности в условиях идеального обслуживания и без него, (график ниже).
         </div>
         <Figure>
           <Grid gridRows={101}
@@ -496,22 +495,20 @@ how to “flatten the curve”</a>.
           />
         </Figure>
         <div>
-          <h3>"Flatten the curve"</h3>
+          <h3>"Сглаживание кривой"</h3>
         </div>
         <div>
-          You've heard this before. You know why it's important. But now you're about to get a feel for it.
+          Вы наверняка слышали это раньше. Почему это важно? Сейчас вы получите возможность понять.
+        </div>
+        
+        <div>
+          Уровень смерности установлен на 3%. Вместимость больниц равна 5%.
         </div>
         <div>
-          This is your final test today.
+          Попробуйте и увидите, что реальный уровень смерности 6%. Попробуйте снизить.
         </div>
         <div>
-          The input fatality rate is fixed at 3 percent. Hospital capacity is fixed at 5 percent.
-        </div>
-        <div>
-          Play out the simulation and note the actual death rate: 6 percent. Then try to bring that number down.
-        </div>
-        <div>
-          In other words, flatten the curve:
+          Другими словами, сгладьте кривую:
         </div>
         <Figure>
           <Grid gridRows={101}
@@ -534,7 +531,7 @@ how to “flatten the curve”</a>.
           />
         </Figure>
         <div>
-          However this worked out for you in simulation, reality is going to be <em>so much harder</em>. Real people don't respond like sliders in a UI.
+          Мы играем в симуляции, но реальность <em>намного сложнее</em>. Настоящие люди не ведут себя в соответствии с движениями слайдера на сайте.
         </div>
         <div>
           And here's the kicker: even if we manage to "flatten the curve" enough to meaningfully space out the case load, we're still positioned to lose millions and millions of lives.
@@ -546,13 +543,13 @@ how to “flatten the curve”</a>.
           Unless we do the right things today.
         </div>
         <div>
-          Stop traveling. Stop going out. Stop visiting your parents and your friends. Stop eating at restaurants. Pause everything you possibly can. If you're in charge of things, <em>cancel them</em>. Lock. It. All. Down.
+          Не передвигайтесь. Не выходите на улицу. Не ходите в гости и не приглашайте к себе (даже родителей). Остановите все активности, которые могут представлять опасность. Если что-то запланировали, <em>отменяйте</em>. Закройтесь. Полностью.
         </div>
         <div>
-          Please: take decisive action now.
+          Пожалуйста, делайте всё возможное.
         </div>
         <div>
-          COVID-19 is coming for us, and it won't be stopped by half-measures.
+          COVID-19 пришёл, и его не остановить полумерами.
         </div>
 
 
@@ -624,19 +621,19 @@ how to “flatten the curve”</a>.
         </div>
         <div>
           <a name="self-quarantine"/>
-          <h3>Self-quarantine</h3>
+          <h3>Самоизоляция</h3>
         </div>
         <div>
           (Thanks to <a href="https://twitter.com/jasonlegate">Jason Legate</a> for suggesting and coding this addition to the disease model.)
         </div>
         <div>
-          In the simulation below, you can vary the <strong>self-quarantine rate</strong>, i.e., the chance that a patient will choose to isolate themselves once they become symptomatic. Patients who become {selfQuarantined} will be drawn in blue instead of red.
+          В этой модели, вы можете изменить <strong>sуровень самоизоляции</strong>, например, человек самоизолируется, как только почувствует симптомы. {selfQuarantined} будут окрашены синим вместо краного.
         </div>
         <div>
-          Additionally, you can vary how strict they are with the <strong>self-quarantine strictness</strong> parameters. At 100 percent strictness, patients who are isolating themselves have 0 encounters with other people. At 0 percent strictness, they have their normal number of encounters. And it varies linearly in between.
+          Дополнительно, вы можете изменять <strong>строгость самоизоляции</strong>. 100 процентов означает, что число контактов пациента рано 0. 0% означает, что он контактирует в обычном режиме. Функци между значениями линейная.
         </div>
         <div>
-          Let's start the self-quarantine rate at 25 percent and the strictness also at 25 percent. What does it take to keep the outbreak contained?
+          Начнем с 25% на самоизоляции и строгостью 25%. Поможет ли это остановить инфекцию?
         </div>
         <Figure>
           <Grid degree={24}
@@ -665,7 +662,7 @@ how to “flatten the curve”</a>.
           For most diseases, self-quarantine won't solve the problem on its own. Rather, it's one tool among many (including better hygiene, social distances, travel restrictions, etc.) that <em>all together</em> can bring an outbreak under control. A big lesson here is that every strategy complements every other strategy.
         </div>
         <div>
-          <h3>Full model</h3>
+          <h3>Полная модель</h3>
         </div>
         <Figure>
           <Grid gridRows={101}
