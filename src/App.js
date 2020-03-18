@@ -46,14 +46,17 @@ class App extends Component<Props, State> {
     return (
       <div className="post-content">
         <div>
-          <h1>Outbreak</h1>
-          <h5 className="author">by Kevin Simler<br/>March 16, 2020</h5>
+          <h1>Вспышка</h1>
+          <h5 className="author">by Kevin Simler<br/>16 марта 2020</h5>
         </div>
         <div>
+          <span className="deemphasized"><a href="https://www.meltingasphalt.com/interactive/outbreak/">English</a></span><br/>
           <span className="deemphasized"><a href="https://www.podemosaprender.org/brote/">en Español</a></span>
         </div>
         <div>
-          <a href="https://twitter.com/Harry_Stevens">Harry Stevens</a> at The Washington Post recently published a <em>very</em> elegant simulation of how a disease like COVID-19 spreads. If you haven't already, I highly recommend <a href="https://www.washingtonpost.com/graphics/2020/world/corona-simulator/">checking it out</a>.
+          <a href="https://twitter.com/Harry_Stevens">Harry Stevens</a> из Washington Post недавно опубликовал <em>очень</em> элегантную симуляцию того, как распространяется инфекция, такая как COVID-19. Если вы до сих пор не прочитали, то рекомендую <a href="https://www.washingtonpost.com/graphics/2020/world/corona-simulator/">Why outbreaks like coronavirus
+spread exponentially, and
+how to “flatten the curve”</a>.
         </div>
         <div>
           Today I want to follow up with something I've been working on: <strong>playable simulations</strong> of a disease outbreak. "Playable" means you'll get to tweak parameters (like transmission and mortality rates) and watch how the epidemic unfolds.
