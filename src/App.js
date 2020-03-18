@@ -46,7 +46,7 @@ class App extends Component<Props, State> {
     return (
       <div className="post-content">
         <div>
-          <h1>Вспышка</h1>
+          <h1>Заражение</h1>
           <h5 className="author">by Kevin Simler<br/>16 марта 2020</h5>
         </div>
         <div>
@@ -235,7 +235,6 @@ how to “flatten the curve”</a>.
           <h3>Вероятность заражения</h3>
         </div>
         <div>
-          Real diseases don't spread outward with 100 percent certainty. They spread probabilistically.
           Реальная инфекция не передается 100% восприимчивых. Она распространяется с некоторой вероятностью.
         </div>
         <div>
@@ -400,7 +399,7 @@ how to “flatten the curve”</a>.
           Этого эффекта мы хотим достичь, держа "социальную дистанцию". Поэтому многие требуют от официальных властей ограничений массовых мероприятий и закрытия учебных заведений, и, поэтому, мы должны держаться подальше от кафе, баров и ресторанов, работать из дома, если это возможно.
         </div>
         <div>
-          NBA закрыло сезон, оказав неоценимую услугу своим фанатам. Теперб нужно закрыть всё.
+          NBA закрыло сезон, оказав неоценимую услугу своим фанатам. Теперь нужно закрыть всё.
         </div>
         <div>
           Это самая важная вещь в борьбе с инфекцией (это не экспертное мнение).
@@ -458,12 +457,10 @@ how to “flatten the curve”</a>.
           Когда пациентов много, система здравоохранения не справляется, Они не могут осущетвлять лечение в нужном объеме. Как результат, большое количество жертв.
         </div>
         <div>
-          I've heard people speak of hospital capacity as the “number of beds,” or “number of ICU beds.” My take is that mere "beds" can be set up in a gymnasium on very short notice. I think the real bottleneck is medical equipment — specifically ventilators. But I'm not sure. Maybe it’s medical personnel.
           Люди говорят о вместимости больниц, как о "количестве кроватеи" иликак о "количестве кроватей с ИВЛ". Есть мысль, что "кровати" можно расставить гед угодно в сжатые сроки. Может быть, реальное узкое место - это ИВЛ. #ноэтонеточно. Может быть, медицинский персоал.
         </div>
         <div>
           В жизни, важно <em>всё это</em>. Мы должны находить узкие места и направлять все усилия на решение проблемы. В симуляции мы не можем указать точно. Ограничимся числом <strong>вместимость больниц</strong>.
-          In reality, this matters <em>a lot</em>. We need to identify what the bottleneck is, and do our best to alleviate pressure there. But for a simulation, we can just wave our hands and assume there's limited capacity somewhere in the system. Remember, we're not trying to model reality too carefully.
         </div>
         <div>
           В модели увидим, как работает перегрузка системы здравоохранения:
@@ -534,13 +531,13 @@ how to “flatten the curve”</a>.
           Мы играем в симуляции, но реальность <em>намного сложнее</em>. Настоящие люди не ведут себя в соответствии с движениями слайдера на сайте.
         </div>
         <div>
-          And here's the kicker: even if we manage to "flatten the curve" enough to meaningfully space out the case load, we're still positioned to lose millions and millions of lives.
+          Гланое: если мы не сгладим кривую, то это может привести к тяжелым последствиям. Мы можем потерять миллионы жизней.
         </div>
         <div>
-          Maybe we won't lose as many as a worst-case scenario; maybe we won't lose them in hospital hallways. But as long as the virus continues to spread — which it shows every sign of doing — there's an unthinkable amount of suffering in our future.
+          Мы не хотим больших потерь. Но пока инфекция распространяется, последствия непредсказуемы. 
         </div>
         <div>
-          Unless we do the right things today.
+          Мы должны начать действовать прямо сейчас.
         </div>
         <div>
           Не передвигайтесь. Не выходите на улицу. Не ходите в гости и не приглашайте к себе (даже родителей). Остановите все активности, которые могут представлять опасность. Если что-то запланировали, <em>отменяйте</em>. Закройтесь. Полностью.
@@ -553,6 +550,56 @@ how to “flatten the curve”</a>.
         </div>
 
 
+
+
+
+
+
+        <div>
+          &nbsp;
+        </div>
+        <div>
+          <a name="self-quarantine"/>
+          <h3>Самоизоляция</h3>
+        </div>
+        <div>
+          (Thanks to <a href="https://twitter.com/jasonlegate">Jason Legate</a> for suggesting and coding this addition to the disease model.)
+        </div>
+        <div>
+          В этой модели, вы можете изменить <strong>уровень самоизоляции</strong>, например, человек самоизолируется, как только почувствует симптомы. {selfQuarantined} будут окрашены синим вместо краного.
+        </div>
+        <div>
+          Дополнительно, вы можете изменять <strong>строгость самоизоляции</strong>. 100 процентов означает, что число контактов пациента рано 0. 0% означает, что он контактирует в обычном режиме. Функци между значениями линейная.
+        </div>
+        <div>
+          Начнем с 25% на самоизоляции и строгостью 25%. Поможет ли это остановить инфекцию?
+        </div>
+        <Figure>
+          <Grid degree={24}
+                gridRows={51}
+                gridCols={51}
+                personHours={20}
+                nodeSize={10}
+                nug={5}
+                randomSeed={100}
+                showAliveFraction={true}
+                showInteractions={true}
+                showPersonHoursSlider={true}
+                showTransmissionProbabilitySlider={true}
+                showChanceOfIsolationAfterSymptomsSlider={true}
+                showDecreaseInEncountersAfterSymptomsSlider={true}
+                showTravelRadiusSlider={true}
+                speed={0.8}
+                transmissionProbability={0.21}
+                travelRadius={20}
+          />
+        </Figure>
+        <div>
+          Как вы видите, добровольная самоизоляция (при появлении симптомов), останавливает распространение. К сожалению, симптомы появляются позже, чем человек становится переносчиком инфекции. Поэтому, её сложно остановить.
+        </div>
+        <div>
+          Для большинства инфекций, самоизоляция не решает проблему. Но это один из способов, не иссключающий многих других (лучшую гигиену, ограничение общения и перемещений). Мы <em>вместе</em> можем начать контролировать распространение. 
+        </div>
 
 
         <div>
@@ -571,6 +618,9 @@ how to “flatten the curve”</a>.
         {/*  Thanks for reading. If this has been helpful, I hope you'll consider sharing.*/}
         {/*</div>*/}
         <div>
+          <a href="https://twitter.com/kapter666">Перевод на русский: @kapter666</a>
+        </div>
+        <div>
           <b>License</b>
         </div>
         <div>
@@ -579,6 +629,7 @@ how to “flatten the curve”</a>.
         <div>
           <a href="https://github.com/kevinsimler/outbreak">Source code</a>
         </div>
+        
         <div>
           <b>Full model</b>
         </div>
@@ -611,55 +662,6 @@ how to “flatten the curve”</a>.
           {/*<div style={{textAlign: 'center', fontSize: '10pt', color: '#666', marginTop: '0.5em'}}>(This is a <em>very low frequency</em> mailing list. Pinky swear.)</div>*/}
           <br/>You can also <a href="https://twitter.com/KevinSimler"><strong>find me on Twitter</strong></a>.
           <div>&nbsp;</div>
-        </div>
-
-
-
-
-        <div>
-          &nbsp;
-        </div>
-        <div>
-          <a name="self-quarantine"/>
-          <h3>Самоизоляция</h3>
-        </div>
-        <div>
-          (Thanks to <a href="https://twitter.com/jasonlegate">Jason Legate</a> for suggesting and coding this addition to the disease model.)
-        </div>
-        <div>
-          В этой модели, вы можете изменить <strong>sуровень самоизоляции</strong>, например, человек самоизолируется, как только почувствует симптомы. {selfQuarantined} будут окрашены синим вместо краного.
-        </div>
-        <div>
-          Дополнительно, вы можете изменять <strong>строгость самоизоляции</strong>. 100 процентов означает, что число контактов пациента рано 0. 0% означает, что он контактирует в обычном режиме. Функци между значениями линейная.
-        </div>
-        <div>
-          Начнем с 25% на самоизоляции и строгостью 25%. Поможет ли это остановить инфекцию?
-        </div>
-        <Figure>
-          <Grid degree={24}
-                gridRows={51}
-                gridCols={51}
-                personHours={20}
-                nodeSize={10}
-                nug={5}
-                randomSeed={100}
-                showAliveFraction={true}
-                showInteractions={true}
-                showPersonHoursSlider={true}
-                showTransmissionProbabilitySlider={true}
-                showChanceOfIsolationAfterSymptomsSlider={true}
-                showDecreaseInEncountersAfterSymptomsSlider={true}
-                showTravelRadiusSlider={true}
-                speed={0.8}
-                transmissionProbability={0.21}
-                travelRadius={20}
-          />
-        </Figure>
-        <div>
-          As you can see, if people voluntarily self-quarantine (once they show symptoms) and are strict about isolating themselves, the spread can be mitigated. Unfortunately, because patients are contagious during the incubation period (before they have a chance to notice their own symptoms), it's hard to stop the spread entirely.
-        </div>
-        <div>
-          For most diseases, self-quarantine won't solve the problem on its own. Rather, it's one tool among many (including better hygiene, social distances, travel restrictions, etc.) that <em>all together</em> can bring an outbreak under control. A big lesson here is that every strategy complements every other strategy.
         </div>
         <div>
           <h3>Полная модель</h3>
