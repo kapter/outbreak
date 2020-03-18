@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "5e411dacec1a65d07b6f",
+    "revision": "f4a52847c2bbf5c5227d",
     "url": "/outbreak/static/css/main.6f48272a.chunk.css"
   },
   {
-    "revision": "5e411dacec1a65d07b6f",
-    "url": "/outbreak/static/js/main.5e411dac.chunk.js"
+    "revision": "f4a52847c2bbf5c5227d",
+    "url": "/outbreak/static/js/main.f4a52847.chunk.js"
   },
   {
     "revision": "5a6546b745159b94c07c",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/outbreak/static/js/runtime~main.c0f49201.js"
   },
   {
-    "revision": "c948a899af8147b4401bcf07802d1d9a",
+    "revision": "959e841330b8bc61e51680e50fd7a8e2",
     "url": "/outbreak/index.html"
   }
 ];
