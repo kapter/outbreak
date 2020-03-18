@@ -1,13 +1,13 @@
 {
   "main.css": "/outbreak/static/css/main.6f48272a.chunk.css",
-  "main.js": "/outbreak/static/js/main.b3007971.chunk.js",
-  "main.js.map": "/outbreak/static/js/main.b3007971.chunk.js.map",
+  "main.js": "/outbreak/static/js/main.3f81db80.chunk.js",
+  "main.js.map": "/outbreak/static/js/main.3f81db80.chunk.js.map",
   "static/js/1.5a6546b7.chunk.js": "/outbreak/static/js/1.5a6546b7.chunk.js",
   "static/js/1.5a6546b7.chunk.js.map": "/outbreak/static/js/1.5a6546b7.chunk.js.map",
   "runtime~main.js": "/outbreak/static/js/runtime~main.c0f49201.js",
   "runtime~main.js.map": "/outbreak/static/js/runtime~main.c0f49201.js.map",
   "static/css/main.6f48272a.chunk.css.map": "/outbreak/static/css/main.6f48272a.chunk.css.map",
   "index.html": "/outbreak/index.html",
-  "precache-manifest.70853d0aba915198d2ee9e2e2c58c6c6.js": "/outbreak/precache-manifest.70853d0aba915198d2ee9e2e2c58c6c6.js",
+  "precache-manifest.2da3c29acbda58ece957ce3f6efea576.js": "/outbreak/precache-manifest.2da3c29acbda58ece957ce3f6efea576.js",
   "service-worker.js": "/outbreak/service-worker.js"
 }
